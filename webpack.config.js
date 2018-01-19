@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const Jarvis = require('webpack-jarvis')
 const { resolve } = require('path')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -58,7 +59,10 @@ let config = {
     ]
   },
   plugins: [
-    new ExtractTextWebpackPlugin('style.css')
+    new ExtractTextWebpackPlugin('style.css'),
+    new Jarvis({
+      port: 1337 // optional: set a port
+    })
   ],
   devServer: {
     contentBase: resolve(__dirname, './public'),
