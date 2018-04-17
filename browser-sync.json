@@ -1,0 +1,9 @@
+{
+  "host": "localhost",
+  "port": 8080,
+  "server": { "baseDir": ["public"] },
+  "files": [
+    "public/**/*",
+    "!public/*.map"
+  ]
+}

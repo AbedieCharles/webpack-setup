@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --progress",
-    "start": "webpack --progress && webpack-dev-server -d --hot --config webpack.config.js --watch",
-    "prod": "NODE_ENV=production webpack"
+    "webpack-dev": "./node_modules/.bin/webpack --progress --config webpack.config.js --watch",
+    "browser-sync": "./node_modules/.bin/browser-sync start --config browser-sync.json",
+    "start": "./node_modules/.bin/npm-run-all --parallel browser-sync webpack-dev",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack"
   },
   "keywords": [
     "webpack",
@@ -33,11 +34,16 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "uglifyjs-webpack-plugin": "^0.4.6",
-    "webpack": "^3.5.5",
+    "webpack": "^3.10.0",
     "webpack-dev-server": "^2.7.1",
     "webpack-jarvis": "^0.2.2"
   },
   "dependencies": {
-    "normalize.css": "^7.0.0"
+    "browser-sync": "^2.23.6",
+    "normalize.css": "^7.0.0",
+    "npm-run-all": "^4.1.2",
+    "postcss-flexbugs-fixes": "^3.3.0",
+    "postcss-smart-import": "^0.7.6",
+    "precss": "^3.1.2"
   }
 }

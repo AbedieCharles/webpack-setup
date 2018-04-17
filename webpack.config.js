@@ -6,17 +6,17 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin')
 
 let config = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     path: resolve(__dirname, './public'),
-    filename: 'output.js'
+    filename: 'app.js'
   },
   resolve: { // These options change how modules are resolved
     extensions: ['.js', '.jsx', '.json', '.scss', '.css', '.jpeg', '.jpg', '.gif', '.png', '.svg'], // Automatically resolve certain extensions
     alias: { // Create aliases
-      images: resolve(__dirname, 'src/assets/images'),  // src/assets/images alias
-      fonts: resolve(__dirname, 'src/assets/fonts'),  // src/assets/fonts alias
-      styles: resolve(__dirname, 'src/assets/scss')  // src/assets/scss alias
+      '@images': resolve(__dirname, 'src/assets/images'),  // src/assets/images alias
+      '@fonts': resolve(__dirname, 'src/assets/fonts'),  // src/assets/fonts alias
+      '@styles': resolve(__dirname, 'src/scss')  // src/assets/scss alias
     }
   },
   module: {
@@ -27,7 +27,7 @@ let config = {
         loader: 'babel-loader' // use this (babel-core) loader
       },
       {
-        test: /\.scss|css$/, // files ending with .js
+        test: /\.scss|css$/,
         use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader', 'postcss-loader']
